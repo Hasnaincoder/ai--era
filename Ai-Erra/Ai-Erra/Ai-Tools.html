@@ -1,0 +1,424 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>Ai-Erra</title>
+
+    <!-- CSS FILES -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,200;0,400;0,700;1,200&family=Unbounded:wght@400;700&display=swap"
+        rel="stylesheet">
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/bootstrap-icons.css" rel="stylesheet">
+    <link href="css/tooplate-kool-form-pack.css" rel="stylesheet">
+    <style>
+        /* Global Styles */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.6;
+            color: #fff;
+            background-color: #000; /* Dark background color as fallback */
+            overflow-x: hidden; /* Prevent horizontal scroll */
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            margin-top: 0cap;
+            padding: 20px;
+            position: relative;
+            z-index: 2; /* Ensure content is above the video */
+        }
+
+        header.site-header {
+            color: #fff;
+            padding: 20px 0;
+            background: rgba(0, 0, 0, 0.5); /* Semi-transparent background for header */
+        }
+
+        header.site-header a {
+            color: #f0c040;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        header.site-header .social-icon a {
+            color: #fff;
+            margin: 0 10px;
+            font-size: 20px;
+        }
+
+        /* Offcanvas Menu Styles */
+        .offcanvas-menu {
+            background-color: #3b3f5c;
+            color: #fff;
+        }
+
+        .offcanvas-menu ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .offcanvas-menu li {
+            margin-bottom: 15px;
+        }
+
+        .offcanvas-menu a {
+            color: #f0c040;
+            text-decoration: none;
+            font-size: 18px;
+        }
+
+        /* Search Bar Styles */
+        #search-bar {
+            background-color: #fff;
+            padding: 20px;
+            border-bottom: 1px solid #ddd;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+        }
+
+        #search-bar input[type="search"] {
+            width: 100%;
+            max-width: 500px;
+            padding: 10px;
+            font-size: 18px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        #search-bar button {
+            background-color: #3498db;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            font-size: 18px;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+
+        #search-bar button:hover {
+            background-color: #2980b9;
+        }
+
+        /* Tools List Styles */
+        #tools-list {
+            padding: 65px 45px;
+            text-align: center;
+        }
+
+        #tools-list h2 {
+            font-size: 28px;
+            margin-bottom: 20px;
+            color: #fff;
+        }
+
+        #tools-list ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            grid-gap: 20px;
+        }
+
+        #tools-list li {
+            background-color: #333;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        #tools-list li:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+        }
+
+        #tools-list i {
+            font-size: 36px;
+            margin-bottom: 10px;
+            color: #3498db;
+        }
+
+        #tools-list h3 {
+            font-size: 20px;
+            margin-bottom: 10px;
+            color: #fff;
+        }
+
+        #tools-list p {
+            font-size: 16px;
+            margin-bottom: 20px;
+            color: #ddd;
+        }
+
+        .btn-use-tool {
+            background-color: #f1c40f;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            font-size: 18px;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+
+        .btn-use-tool:hover {
+            background-color: #d4ac0d;
+        }
+
+        /* Modal Styles */
+        .modal-content {
+            background: #333;
+            color: #fff;
+            padding: 20px;
+        }
+
+        .modal-header {
+            border-bottom: none;
+        }
+
+        .modal-footer {
+            border-top: none;
+        }
+
+        .form-control {
+            border: 1px solid #555;
+            background: #222;
+            color: #fff;
+        }
+
+        .form-control::placeholder {
+            color: #888;
+        }
+
+        .form-control:focus {
+            border-color: #007bff;
+            background: #333;
+        }
+
+        .btn-close {
+            filter: invert(1);
+        }
+
+        /* Footer Styles */
+        footer {
+            background-color: #3b3f5c;
+            color: #fff;
+            padding: 20px 0;
+            text-align: center;
+            margin-top: 137px;
+        }
+
+        footer p {
+            margin: 0;
+            font-size: 14px;
+        }
+
+        footer a {
+            color: #f0c040;
+            text-decoration: none;
+        }
+
+        /* Video Background Styles */
+        .video-background {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            z-index: -1;
+            background: #000;
+        }
+
+        .video-background video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .content-overlay {
+            position: relative;
+            z-index: 2;
+            padding: 60px 20px;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="video-background">
+        <video autoplay="" loop="" muted="">
+            <source src="videos/video.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+    </div>
+
+    <main>
+        <header class="site-header">
+            <div class="container">
+                <div class="row justify-content-between">
+
+                    <div class="col-lg-12 col-12 d-flex align-items-center">
+                        <a class="site-header-text d-flex justify-content-center align-items-center me-auto" href="index.html">
+                            <img src="/images/ai.png" width="30px" height="30px" alt="logo">
+                            <span>
+                                Ai-Tools
+                            </span>
+                        </a>
+
+                        <ul class="social-icon d-flex justify-content-center align-items-center mx-auto">
+                            <span class="text-white me-4 d-none d-lg-block">Stay connected</span>
+
+                            <li class="social-icon-item">
+                                <a href="https://www.instagram.com/" class="social-icon-link bi-instagram"></a>
+                            </li>
+
+                            <li class="social-icon-item">
+                                <a href="https://twitter.com/?lang=en" class="social-icon-link bi-twitter"></a>
+                            </li>
+
+                            <li class="social-icon-item">
+                                <a href="https://web.whatsapp.com/" class="social-icon-link bi-whatsapp"></a>
+                            </li>
+                        </ul>
+
+                        <div>
+                            <a href="#" class="custom-btn custom-border-btn btn" data-bs-toggle="modal"
+                                data-bs-target="#subscribeModal">Notify me
+                                <i class="bi-arrow-right ms-2"></i>
+                            </a>
+                        </div>
+
+                        <a class="bi-list offcanvas-icon" data-bs-toggle="offcanvas" href="#offcanvasMenu" role="button"
+                            aria-controls="offcanvasMenu"></a>
+
+                    </div>
+
+                </div>
+            </div>
+        </header>
+
+
+        <div class="offcanvas offcanvas-end" data-bs-scroll="true" tabindex="-1" id="offcanvasMenu"
+            aria-labelledby="offcanvasMenuLabel">
+            <div class="offcanvas-header">
+                <button type="button" class="btn-close ms-auto" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+            </div>
+
+            <div class="offcanvas-body d-flex flex-column justify-content-center align-items-center">
+                <nav>
+                    <ul>
+                        <li>
+                            <a href="Ai-Erra Chatbot.html">Ai-Erra Chatbot</a>
+                        </li>
+                        
+                        <li>
+                            <a href="Ai-Tools.html">Ai-Tools</a>
+                        </li>
+
+                        <li>
+                            <a href="login.html">Login Form</a>
+                        </li>
+
+                        <li>
+                            <a href="register.html">Create an account</a>
+                        </li>
+
+                        <li>
+                            <a href="Resources.html">Resources</a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+
+        <!-- Modal -->
+        <div class="modal fade" id="subscribeModal" tabindex="-1" aria-labelledby="subscribeModalLabel"
+            aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <form action="#" method="get" class="custom-form mt-lg-4 mt-2" role="form">
+                            <h2 class="modal-title" id="subscribeModalLabel">Stay up to date</h2>
+                            <input type="email" name="email" id="email" pattern="[^ @]*@[^ @]*" class="form-control"
+                                placeholder="your@email.com" required="">
+                            <button type="submit" class="form-control">Notify</button>
+                        </form>
+                    </div>
+                    <div class="modal-footer justify-content-center">
+                        <p>By signing up, you agree to our Privacy Notice</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Tools List Section -->
+        <section id="tools-list">
+            <div class="container content-overlay">
+                <h2>AI ERRA Tools</h2>
+                <ul>
+                    <li>
+                        <i class="fas fa-chart-bar"></i>
+                        <h3>Data Analytics Tool</h3>
+                        <p>Analyze and visualize your data with our AI-powered tool</p>
+                        <button class="btn-use-tool"><a href="Ai-Erra Chatbot.html">Use Tool</a></button>
+                    </li>
+                    <li>
+                        <i class="fas fa-language"></i>
+                        <h3>Language Translation Tool</h3>
+                        <p>Break language barriers with our AI-powered translation tool</p>
+                        <button class="btn-use-tool"><a href="Ai-Erra Chatbot.html">Use Tool</a></button>
+                    </li>
+                    <li>
+                        <i class="fas fa-robot"></i>
+                        <h3>AI-Powered Chatbot</h3>
+                        <p>Get instant assistance with our intelligent chatbot</p>
+                        <button class="btn-use-tool"><a href="Ai-Erra Chatbot.html">Use Tool</a></button>
+                    </li>
+                    <!-- Add more tools here -->
+                </ul>
+            </div>
+        </section>
+
+        <!-- Footer Section -->
+        <footer>
+            <div class="container">
+                <p>&copy; 2024 Ai-Erra. All Rights Reserved. <a href="#">Privacy Policy</a></p>
+            </div>
+        </footer>
+    </main>
+
+    <!-- JAVASCRIPT FILES -->
+    <script src="js/jquery.min.js"></script>
+    <script src="js/bootstrap.bundle.min.js"></script>
+    <script src="js/countdown.js"></script>
+    <script src="js/init.js"></script>
+
+</body>
+
+</html>
